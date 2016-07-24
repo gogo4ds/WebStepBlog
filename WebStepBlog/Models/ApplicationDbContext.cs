@@ -18,5 +18,7 @@ namespace WebStepBlog.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<WebStepBlog.Models.Post> Posts { get; set; }
     }
 }
