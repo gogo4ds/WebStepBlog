@@ -17,7 +17,7 @@ namespace WebStepBlog.Controllers
         // GET: Posts
         public ActionResult Index()
         {
-            return View(db.Posts.ToList());
+            return View(db.Posts.Include(p => p.Author).ToList());
         }
 
         // GET: Posts/Details/5
