@@ -1,16 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebStepBlog.Models;
 
 namespace WebStepBlog.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
+
         public ActionResult Index()
         {
-            return View();
+            var posts = db.Posts.Include(p => p.Author).OrderByDescending(p => p.Date).Take(3);
+            return View(posts.ToList());
         }
 
         public ActionResult About()

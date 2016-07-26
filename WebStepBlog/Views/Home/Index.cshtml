@@ -1,39 +1,33 @@
-﻿@{
+﻿@using WebStepBlog.Models
+@{
     ViewBag.Title = "WebStep";
 }
 
+@model IEnumerable<WebStepBlog.Models.Post>
 <div class="jumbotron">
     <h1>WebStep</h1>
     <p class="lead">My New parapgraph</p>
 </div>
 
-<section class="row">
-    <article class="col-md-4">
-        <h2 class="title">Заглавие на пост</h2>
-        <div>
-            Публикувано от <i>Бончо Бонев</i> на <i>12-Юли-2016</i>
-        </div>
-        <div class="post-body">
-            <p>
-                параграф 1
-            </p>
-            <p>
-                параграф 2
-            </p>
-        </div>
-    </article>
-    <article class="col-md-4">
-        <h2 class="title">Заглавие на пост</h2>
-        <div>
-            Публикувано от <i>Иванчо Петков</i> на <i>12-Юли-2016</i>
-        </div>
-        <div class="post-body">
-            <p>
-                параграф 1
-            </p>
-            <p>
-                параграф 2
-            </p>
-        </div>
-    </article>
-</section>
+@foreach (var post in Model)
+{
+    <section class="row">
+        <article class="col-md-6">
+            <h2 class="title">@post.Title</h2>
+            <div>
+                Публикувано на <i>@post.Date</i> 
+                <i>
+                    @if (post.Author != null)
+                    {
+                        @:от <i>@post.Author.FullName</i>
+                    }
+                </i>
+            </div>
+            <div class="post-body">
+                <p>
+                    @post.Body
+                </p>
+            </div>
+        </article>
+    </section>
+}
