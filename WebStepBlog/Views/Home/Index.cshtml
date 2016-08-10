@@ -4,15 +4,11 @@
 }
 
 @model IEnumerable<WebStepBlog.Models.Post>
-<div class="jumbotron">
-    <h1>WebStep</h1>
-    <p class="lead">My New parapgraph</p>
-</div>
 
 @foreach (var post in Model)
 {
     <section class="row">
-        <article class="col-md-9">
+        <article class="post col-md-9">
             <h2 class="title">@post.Title</h2>
             <div>
                 Публикувано на <i>@post.Date</i> 

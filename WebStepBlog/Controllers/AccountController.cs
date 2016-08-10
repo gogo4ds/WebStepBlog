@@ -153,9 +153,9 @@ namespace WebStepBlog.Controllers
             {
                 var user = new ApplicationUser
                 {
-                    UserName = model.Email,
+                    UserName = model.UserName,
                     Email = model.Email,
-                    FullName = model.FullName                    
+                    FullName = model.FullName                     
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
