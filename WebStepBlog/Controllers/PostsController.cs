@@ -132,5 +132,24 @@ namespace WebStepBlog.Controllers
             }
             base.Dispose(disposing);
         }
+
+        // GET: Posts/SinglePost/5
+        public ActionResult SinglePost(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Post post = GetPost(id);
+            if (post == null)
+            {
+                return HttpNotFound();
+            }
+            return View(post);
+        }
+        private Post GetPost(int? id)
+        {
+            return id.HasValue ? db.Posts.Include(p => p.Author).Where(x => x.Id == id).First() : new Post { Id = -1 };
+        }
     }
 }

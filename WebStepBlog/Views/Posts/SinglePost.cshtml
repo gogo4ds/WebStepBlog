@@ -1,0 +1,22 @@
+﻿@model WebStepBlog.Models.Post
+
+@{
+    ViewBag.Title = "SinglePost";
+}
+<div class="single-post">
+    <h2 style="padding:10px;">@Model.Title</h2>
+    <hr />
+    <div style="padding:10px;">
+        <strong>Posted at:</strong> <i><span>@Model.Date</span></i>
+        <br />
+        <strong>Post author: </strong><i><span>@Model.Author.FullName</span></i>
+    </div>
+    <hr />
+    <div style="padding:10px;">
+        @Model.Body
+    </div>
+</div>
+
+<p>
+    @Html.ActionLink("Back to Home", "Index", "Home")
+</p>
