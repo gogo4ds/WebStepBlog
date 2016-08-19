@@ -9,6 +9,10 @@ namespace WebStepBlog.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Post> Posts { get; set; }
+
+        public DbSet<Comment> Comments { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -18,7 +22,5 @@ namespace WebStepBlog.Models
         {
             return new ApplicationDbContext();
         }
-
-        public System.Data.Entity.DbSet<WebStepBlog.Models.Post> Posts { get; set; }
     }
 }

@@ -26,6 +26,7 @@
                     @post.Body
                 </p>
             </div>
+            <div>@Html.ActionLink("Comment", "CreateComment", "Comments", new { id = post.Id }, null)</div>
         </article>
     </section>
 }

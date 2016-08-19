@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -22,5 +23,9 @@ namespace WebStepBlog.Models
         public DateTime Date { get; set; }
 
         public ApplicationUser Author { get; set; }
+
+        public Comment Comment { get; set; }
+
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 }
