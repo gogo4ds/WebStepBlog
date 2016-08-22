@@ -19,6 +19,18 @@
                         @:от <i>@post.Author.FullName</i>
                     }
                 </i>
+                @if (post.Comments.Count==0)
+                {
+                    <span style="float:right">@Html.ActionLink("Leave a comment","CreateComment","Comments",new { id=post.Id},null)</span>
+                }
+                else if (post.Comments.Count == 1)
+                {
+                    <span style="float:right">@Html.ActionLink(post.Comments.Count+" Comment", "CreateComment", "Comments", new { id = post.Id }, null)</span>
+                }
+                else
+                {
+                    <span style="float:right">@Html.ActionLink(post.Comments.Count + " Comments", "CreateComment", "Comments", new { id = post.Id }, null)</span>
+                }
             </div>
             <hr />
             <div class="post-body">
@@ -26,7 +38,6 @@
                     @post.Body
                 </p>
             </div>
-            <div>@Html.ActionLink("Comment", "CreateComment", "Comments", new { id = post.Id }, null)</div>
         </article>
     </section>
 }
