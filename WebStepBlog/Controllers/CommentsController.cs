@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -38,14 +39,23 @@ namespace WebStepBlog.Controllers
             {
                 var post = db.Posts.Find(postId);
                 Comment inputComment = new Comment();
-                inputComment.Name = comment.Name;
                 inputComment.Body = comment.Body;
-                inputComment.Email = comment.Email;
+                if (User.Identity.IsAuthenticated)
+                {
+                    string user = User.Identity.GetUserId();
+                    ApplicationUser currentUser = db.Users.FirstOrDefault(u => u.Id == user);
+                    inputComment.Name = currentUser.UserName;
+                    inputComment.Email = currentUser.Email;
+                }
+                else
+                {
+                    inputComment.Name = comment.Name;
+                    inputComment.Email = comment.Email;
+                }
                 post.Comments.Add(inputComment);
                 db.SaveChanges();
                 return RedirectToAction("CreateComment", new { id = postId });
             }
-
             return View("CreateComment", comment);
         }
     }
