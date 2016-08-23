@@ -32,4 +32,19 @@ textarea {
     margin:2px;
     border-radius:5px;
 }
+.comment-info {
+    height:20px;
+}
+.comment-preview {
+    width:500px;
+}
+.comment-body {
+    margin-top:10px;
+    margin:20px;
+    width:500px;
+    padding:8px;
+    background:#f0f8ff;
+    border-radius:10px;
+    word-wrap:break-word;
+}
 
