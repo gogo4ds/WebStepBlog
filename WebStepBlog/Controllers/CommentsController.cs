@@ -46,6 +46,7 @@ namespace WebStepBlog.Controllers
                     ApplicationUser currentUser = db.Users.FirstOrDefault(u => u.Id == user);
                     inputComment.Name = currentUser.UserName;
                     inputComment.Email = currentUser.Email;
+                    inputComment.User = db.Users.FirstOrDefault(u => u.UserName == User.Identity.Name);
                 }
                 else
                 {
