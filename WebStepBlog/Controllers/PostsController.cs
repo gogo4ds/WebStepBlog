@@ -119,6 +119,7 @@ namespace WebStepBlog.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Post post = db.Posts.Find(id);
+            db.Comments.RemoveRange(post.Comments);
             db.Posts.Remove(post);
             db.SaveChanges();
             return RedirectToAction("Index");

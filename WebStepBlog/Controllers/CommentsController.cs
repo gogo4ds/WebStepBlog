@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -58,6 +59,67 @@ namespace WebStepBlog.Controllers
                 return RedirectToAction("CreateComment", new { id = postId });
             }
             return View("CreateComment", comment);
+        }
+
+        // GET: Comments/EditComment/5
+        [Authorize(Roles = "Administrators")]
+        public ActionResult EditComment(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Comment comment = db.Comments.Find(id);
+            if (comment == null)
+            {
+                return HttpNotFound();
+            }
+            return View(comment);
+        }
+
+        // POST: Comments/EditComment/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [Authorize(Roles = "Administrators")]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditComment([Bind(Include = "Id,Name,Email,Body")] Comment comment, int id)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(comment).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index", "Home");
+            }
+            return View(comment);
+        }
+
+        // GET: Comments/DeleteComment/5
+        [Authorize(Roles = "Administrators")]
+        public ActionResult DeleteComment(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Comment comment = db.Comments.Find(id);
+            if (comment == null)
+            {
+                return HttpNotFound();
+            }
+            return View(comment);
+        }
+
+        // POST: Comment/DeleteComment/5
+        [Authorize(Roles = "Administrators")]
+        [HttpPost, ActionName("DeleteComment")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteComment(int id)
+        {
+            Comment comment = db.Comments.Find(id);
+            db.Comments.Remove(comment);
+            db.SaveChanges();
+            return RedirectToAction("Index", "Home");
         }
     }
 }
