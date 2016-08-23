@@ -22,8 +22,11 @@
                 <div class="comment-info">
                     <div>  
                             <i>Posted by</i> <strong>@comment.Name</strong> on @comment.Date
-                        <div style="float:right">@Html.ActionLink("Delete", "DeleteComment", "Comments", new { id = comment.Id }, null)</div>
-                        <div style="float:right;margin-right:10px">@Html.ActionLink("Edit", "EditComment", "Comments", new { id = comment.Id }, null)</div>
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Administrators"))
+                        {
+                            <div style="float:right">@Html.ActionLink("Delete", "DeleteComment", "Comments", new { id = comment.Id }, null)</div>
+                            <div style="float:right;margin-right:10px">@Html.ActionLink("Edit", "EditComment", "Comments", new { id = comment.Id }, null)</div>
+                        }
                     </div>
                 </div>
                 <div class="comment-body">
