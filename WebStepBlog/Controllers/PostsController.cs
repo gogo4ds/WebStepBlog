@@ -148,6 +148,7 @@ namespace WebStepBlog.Controllers
             }
             return View(post);
         }
+
         private Post GetPost(int? id)
         {
             return id.HasValue ? db.Posts.Include(p => p.Author).Where(x => x.Id == id).First() : new Post { Id = -1 };

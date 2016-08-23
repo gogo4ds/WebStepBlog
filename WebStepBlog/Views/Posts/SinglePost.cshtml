@@ -17,6 +17,19 @@
     </div>
 </div>
 
+<h2>Comments:</h2>
+@foreach (var comment in Model.Comments)
+{
+    <div class="comment-preview">
+        <div class="comment-info">
+            <div>
+                <i>Posted by</i> <strong>@comment.Name</strong> on @comment.Date 
+            </div>
+        </div>
+        <div class="comment-body">@Html.Raw(comment.Body)</div>
+    </div>
+}
+
 <p>
     @Html.ActionLink("Back to Home", "Index", "Home")
 </p>
