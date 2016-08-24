@@ -22,12 +22,17 @@ namespace WebStepBlog.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Post post = db.Posts.Find(id);
+            Post post = GetPost(id);
             if (post == null)
             {
                 return HttpNotFound();
             }
             return View(post);
+        }
+
+        private Post GetPost(int? id)
+        {
+            return id.HasValue ? db.Posts.Include(p => p.Author).Where(x => x.Id == id).First() : new Post { Id = -1 };
         }
 
         // POST: Comments/Create/5

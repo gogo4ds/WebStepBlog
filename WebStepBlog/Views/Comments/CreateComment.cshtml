@@ -5,12 +5,21 @@
     ViewBag.Title = "CreateComment";
 }
 
-@using (Html.BeginForm(new { Action = "AddComment", postId=Model.Id }))
+@using (Html.BeginForm(new { Action = "AddComment", postId = Model.Id }))
 {
-    <div class="post-title">
-        <h2>@Model.Title</h2>
+    <div class="single-post">
+        <h2 style="padding:10px;">@Model.Title</h2>
+        <hr />
+        <div style="padding:10px;">
+            <strong>Posted at:</strong> <i><span>@Model.Date</span></i>
+            <br />
+            <strong>Post author: </strong><i><span>@Model.Author.FullName</span></i>
+        </div>
+        <hr />
+        <div style="padding:10px;">
+            @Model.Body
+        </div>
     </div>
-    <div class="post-body">@Model.Body</div>
     <hr />
     <strong>@Model.Comments.Count() comments to <i>@Model.Title</i></strong>
     <hr />
