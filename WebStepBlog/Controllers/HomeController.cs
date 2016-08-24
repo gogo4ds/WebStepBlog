@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebStepBlog.Models;
+using PagedList;
+using PagedList.Mvc;
 
 namespace WebStepBlog.Controllers
 {
@@ -12,10 +14,10 @@ namespace WebStepBlog.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            var posts = db.Posts.Include(p => p.Author).OrderByDescending(p => p.Date).Take(3);
-            return View(posts.ToList());
+            var posts = db.Posts.Include(p => p.Author).OrderByDescending(p => p.Date).ToList().ToPagedList(page ?? 1,5) ;
+            return View(posts);
         }
 
         public ActionResult About()

@@ -1,9 +1,11 @@
 ﻿@using WebStepBlog.Models
+@using PagedList;
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "WebStep";
 }
 
-@model IEnumerable<WebStepBlog.Models.Post>
+@model IPagedList<WebStepBlog.Models.Post>
 
 @foreach (var post in Model)
 {
@@ -41,3 +43,4 @@
         </article>
     </section>
 }
+<div class="pager">@Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true })</div>
