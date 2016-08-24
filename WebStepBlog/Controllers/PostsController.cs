@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebStepBlog.Models;
+using PagedList;
+using PagedList.Mvc;
 
 namespace WebStepBlog.Controllers
 {
@@ -16,9 +18,9 @@ namespace WebStepBlog.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Posts
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View(db.Posts.Include(p => p.Author).ToList());
+            return View(db.Posts.Include(p => p.Author).ToList().ToPagedList(page ?? 1,5));
         }
 
         // GET: Posts/Details/5
