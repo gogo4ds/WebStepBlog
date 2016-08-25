@@ -9,6 +9,10 @@ namespace WebStepBlog.Models
 {
     public class Post
     {
+        public Post()
+        {
+            this.Tags = new List<Tag>();
+        }
         [Key]
         public int Id { get; set; }
 

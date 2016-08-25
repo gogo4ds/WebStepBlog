@@ -20,7 +20,8 @@ namespace WebStepBlog.Controllers
         // GET: Posts
         public ActionResult Index(int? page)
         {
-            return View(db.Posts.Include(p => p.Author).ToList().ToPagedList(page ?? 1,5));
+            var posts = db.Posts.Include(p => p.Author).Include(p => p.Tags).ToList().ToPagedList(page ?? 1, 5);
+            return View(posts);
         }
 
         // GET: Posts/Details/5
