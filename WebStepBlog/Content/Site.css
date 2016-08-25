@@ -48,3 +48,6 @@ textarea {
     word-wrap:break-word;
 }
 
+.create-post-body {
+    background-color: lightyellow;
+}

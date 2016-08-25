@@ -22,5 +22,7 @@ namespace WebStepBlog.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<WebStepBlog.Models.Tag> Tags { get; set; }
     }
 }
