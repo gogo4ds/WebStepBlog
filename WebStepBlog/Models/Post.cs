@@ -28,5 +28,9 @@ namespace WebStepBlog.Models
         public Comment Comment { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
+
+        public Tag Tag { get; set; }
+
+        public virtual ICollection<Tag> Tags { get; set; }
     }
 }
