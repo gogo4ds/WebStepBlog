@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using WebStepBlog.Models;
 using PagedList;
 using PagedList.Mvc;
+using WebStepBlog.Extensions;
 
 namespace WebStepBlog.Controllers
 {
@@ -60,6 +61,7 @@ namespace WebStepBlog.Controllers
                 post.Date = DateTime.Now;
                 db.Posts.Add(post);
                 db.SaveChanges();
+                this.AddNotification("Post created!",NotificationType.SUCCESS);
                 return RedirectToAction("Index");
             }
 
