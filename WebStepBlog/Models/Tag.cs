@@ -15,8 +15,7 @@ namespace WebStepBlog.Models
         [StringLength(50)]
         public string Title { get; set; }
 
-        public Post Post {get; set;}
-        public virtual ICollection<Post> Posts { get; set; }
+        public ICollection<Post> Posts { get; set; }
 
     }
 }
