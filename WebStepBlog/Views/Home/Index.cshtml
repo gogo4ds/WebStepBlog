@@ -1,60 +1,80 @@
-﻿@using WebStepBlog.Models
+﻿@model IEnumerable<object>
 @using PagedList;
 @using PagedList.Mvc;
 @using WebStepBlog.Classes
+
+@{
+    IPagedList<WebStepBlog.Models.Post> Posts = Model.ToList()[0] as IPagedList<WebStepBlog.Models.Post>;
+    List<WebStepBlog.Models.Post> recentPosts = Model.ToList()[1] as List<WebStepBlog.Models.Post>;
+}
+
 @{
     ViewBag.Title = "WebStep";
 }
 
-@model IPagedList<WebStepBlog.Models.Post>
-
-@foreach (var post in Model)
-{
-    <section class="row">
-        <article class="post col-md-9">
-            <h2 class="title">@Html.ActionLink(@post.Title, "SinglePost", "Posts", new { id = post.Id }, null) </h2>
-            <hr />
-            <div>
-                Публикувано на <span class="glyphicon glyphicon-calendar"></span>    <i>@post.Date</i>
-                <i>
-                    @if (post.Author != null)
-                    {
-                        @:от <span class="glyphicon glyphicon-user"></span> <i>@post.Author.FullName</i>
+<div class="row">
+    <div class="col-md-8">
+        @foreach (var post in Posts)
+        {
+            <article class="post col-md-8" style="width:700px">
+                <h2 class="title">@Html.ActionLink(@post.Title, "SinglePost", "Posts", new { id = post.Id }, null) </h2>
+                <hr />
+                <div>
+                    Публикувано на <span class="glyphicon glyphicon-calendar"></span>    <i>@post.Date</i>
+                    <i>
+                        @if (post.Author != null)
+                        {
+                            @:от <span class="glyphicon glyphicon-user"></span> <i>@post.Author.FullName</i>
                     }
-                </i>
-                @if (post.Comments.Count == 0)
+                    </i>
+                    @if (post.Comments.Count == 0)
                 {
-                    <div style="float:right">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                        @Html.ActionLink("Leave a comment", "CreateComment", "Comments", new { id = post.Id }, null)
-                    </div>
-                }
-                else if (post.Comments.Count == 1)
-                {
-                    <div style="float:right">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                        @Html.ActionLink(post.Comments.Count + " Comment", "CreateComment", "Comments", new { id = post.Id }, null)
-                    </div>
-                }
-                else
-                {
-                    <div style="float:right">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                        @Html.ActionLink(post.Comments.Count + " Comments", "CreateComment", "Comments", new { id = post.Id }, null)
-                    </div>
-                }
-            </div>
-            <hr />
-            <div class="post-body">
-                <p>
-                    @Utils.CutText(post.Body, 200)
-                    @if (post.Body.Length > 200)
-                    {
-                        <span class="glyphicons glyphicons-book-open"></span><span style="float:right">@Html.ActionLink("Read More", "SinglePost", "Posts", new { id = post.Id }, null)</span>
+                        <div style="float:right">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            @Html.ActionLink("Leave a comment", "CreateComment", "Comments", new { id = post.Id }, null)
+                        </div>
                     }
-                </p>
+                    else if (post.Comments.Count == 1)
+                    {
+                        <div style="float:right">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            @Html.ActionLink(post.Comments.Count + " Comment", "CreateComment", "Comments", new { id = post.Id }, null)
+                        </div>
+                    }
+                    else
+                    {
+                        <div style="float:right">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            @Html.ActionLink(post.Comments.Count + " Comments", "CreateComment", "Comments", new { id = post.Id }, null)
+                        </div>
+                    }
+                </div>
+                <hr />
+                <div class="post-body">
+                    <p>
+                        @Utils.CutText(post.Body, 200)
+                        @if (post.Body.Length > 200)
+                        {
+                            <span style="float:right">@Html.ActionLink("Read More", "SinglePost", "Posts", new { id = post.Id }, null)</span>
+                        }
+                    </p>
+                </div>
+            </article>
+        }
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><strong>Recent Posts</strong></h3>
             </div>
-        </article>
-    </section>
-}
-<div class="pager">@Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true })</div>
+            @for (int i = 0; i < Math.Min(recentPosts.Count(), 5); i++)
+            {
+                <div class="panel-body">
+                    <span class="glyphicon glyphicon-book"></span>
+                    @recentPosts[i].Title
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div class="pager">@Html.PagedListPager(Posts, page => Url.Action("Index", new { page }), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true })</div>

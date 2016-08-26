@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 80px;
     padding-bottom: 20px;
 }
 
@@ -57,4 +57,10 @@ textarea {
 }
 .title {
     text-align:center;
+}
+.panel-title {
+    text-align:center;
+}
+.panel-body {
+    border-bottom:inset;
 }

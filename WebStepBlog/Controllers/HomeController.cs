@@ -16,8 +16,10 @@ namespace WebStepBlog.Controllers
 
         public ActionResult Index(int? page)
         {
-            var posts = db.Posts.Include(p => p.Author).OrderByDescending(p => p.Date).ToList().ToPagedList(page ?? 1,5) ;
-            return View(posts);
+            List<object> sumModel = new List<object>();
+            sumModel.Add(db.Posts.Include(p => p.Author).OrderByDescending(p => p.Date).ToList().ToPagedList(page ?? 1, 5));
+            sumModel.Add(db.Posts.OrderByDescending(d => d.Date).ToList());
+            return View(sumModel);
         }
 
         public ActionResult About()
