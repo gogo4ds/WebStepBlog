@@ -8,7 +8,7 @@
 @using (Html.BeginForm(new { Action = "AddComment", postId = Model.Id }))
 {
     <div class="single-post">
-        <h2 style="padding:10px;">@Model.Title</h2>
+        <h2 style="padding:10px;text-align:center">@Model.Title</h2>
         <hr />
         <div style="padding:10px;">
             <strong>Posted at:</strong> <i><span>@Model.Date</span></i>
@@ -104,7 +104,7 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Post comment" class="btn btn-default" />
+                    <input type="submit" value="Post comment" class="btn btn-info" />
                 </div>
             </div>
         </div>

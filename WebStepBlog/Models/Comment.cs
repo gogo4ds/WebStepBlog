@@ -24,6 +24,7 @@ namespace WebStepBlog.Models
         public DateTime Date { get; set; }
 
         [Required]
+        [Display(Name="Content")]
         [DataType(DataType.MultilineText)]
         public string Body { get; set; }
 
