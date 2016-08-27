@@ -74,3 +74,9 @@ textarea {
     display: inline;
     color: #00bfff;
 }
+.tag {
+    border:groove;
+    background:#b6fff4;
+    border-radius:15px;
+    padding:2px;
+}
