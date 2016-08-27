@@ -24,7 +24,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.ActionLink(item.Title, "Index", "Posts") //TODO: Redirect to ALL posts with this tag
+            @Html.ActionLink(item.Title, "PostsByTag", "Tags") //TODO: Redirect to ALL posts with this tag
         </td>
         <td>
             @foreach (var post in item.Posts)

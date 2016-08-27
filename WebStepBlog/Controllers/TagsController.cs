@@ -21,6 +21,12 @@ namespace WebStepBlog.Controllers
             return View(tags);
         }
 
+        public ActionResult PostsByTag()
+        {
+            var tags = db.Tags.Include(t => t.Posts).ToList();
+            return View(tags);
+        }
+
         // GET: Tags/Details/5
         public ActionResult Details(int? id)
         {
