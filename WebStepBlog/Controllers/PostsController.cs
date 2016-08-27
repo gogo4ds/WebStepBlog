@@ -57,7 +57,7 @@ namespace WebStepBlog.Controllers
         {
             if (ModelState.IsValid)
             {
-                var tags = post.Tag.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                var tags = post.Tag.Split(new char[] { ',',' ' }, StringSplitOptions.RemoveEmptyEntries);
                 List<Tag> postTags = new List<Tag>();
                 foreach (var tag in tags)
                 {
