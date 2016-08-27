@@ -1,4 +1,5 @@
-﻿@using WebStepBlog.Models
+﻿@using System.Activities.Statements
+@using WebStepBlog.Models
 @model IEnumerable<WebStepBlog.Models.Tag>
 
 @{
@@ -15,13 +16,21 @@
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.Posts)
+        </th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.ActionLink(item.Title, "Index", "Posts")  //TODO: Redirect to posts with this tag
+            @Html.ActionLink(item.Title, "Index", "Posts") //TODO: Redirect to ALL posts with this tag
+        </td>
+        <td>
+            @foreach (var post in item.Posts)
+            {
+                @Html.ActionLink(post.Title, "SinglePost", "Posts", new { id = post.Id }, null)
+            }
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
@@ -30,5 +39,6 @@
         </td>
     </tr>
 }
+
 
 </table>
