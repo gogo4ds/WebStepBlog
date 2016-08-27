@@ -19,6 +19,15 @@
         <div style="padding:10px;">
             @Model.Body
         </div>
+        <div class="post-tags">
+            <span class="glyphicon glyphicon-tags"></span><h4> Tags:</h4>
+            @foreach (var tag in Model.Tags)
+            {
+                <spanc class="tag">
+                    <strong>@tag.Title</strong>
+                </spanc>
+            }
+        </div>
     </div>
     <hr />
     <strong>@Model.Comments.Count() comments to <i>@Model.Title</i></strong>

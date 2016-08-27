@@ -178,7 +178,7 @@ namespace WebStepBlog.Controllers
 
         private Post GetPost(int? id)
         {
-            return id.HasValue ? db.Posts.Include(p => p.Author).Where(x => x.Id == id).First() : new Post { Id = -1 };
+            return id.HasValue ? db.Posts.Include(p => p.Author).Include(t=>t.Tags).Where(x => x.Id == id).First() : new Post { Id = -1 };
         }
 
 

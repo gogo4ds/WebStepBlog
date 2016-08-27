@@ -20,8 +20,13 @@
 </div>
 
 <div class="post-tags">
-    <h4>Tags:</h4>
-    TODO: add tags
+    <span class="glyphicon glyphicon-tags"></span><h4> Tags:</h4>
+    @foreach (var tag in Model.Tags)
+    {
+        <spanc class="tag">
+            <strong>@tag.Title</strong>
+        </spanc>
+    }
 </div>
 
 @if (Model.Comments.Count > 0)
