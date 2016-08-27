@@ -20,11 +20,11 @@
                 <h2 class="title">@Html.ActionLink(@post.Title, "SinglePost", "Posts", new { id = post.Id }, null) </h2>
                 <hr />
                 <div>
-                    Публикувано на <span class="glyphicon glyphicon-calendar"></span>    <i>@post.Date</i>
+                    Posted on <span class="glyphicon glyphicon-calendar"></span>    <i>@post.Date</i>
                     <i>
                         @if (post.Author != null)
                         {
-                            @:от <span class="glyphicon glyphicon-user"></span> <i>@post.Author.FullName</i>
+                            @:from <span class="glyphicon glyphicon-user"></span> <i>@post.Author.FullName</i>
                     }
                     </i>
                     @if (post.Comments.Count == 0)

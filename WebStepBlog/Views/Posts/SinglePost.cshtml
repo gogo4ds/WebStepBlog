@@ -1,21 +1,27 @@
-﻿@model WebStepBlog.Models.Post
+﻿@using WebStepBlog.Models
+@model WebStepBlog.Models.Post
 
 @{
     ViewBag.Title = "SinglePost";
 }
 
 <div class="single-post">
-    <h2 style="padding:10px;text-align:center">@Model.Title</h2>
-    <hr />
-    <div style="padding:10px;">
+    <h2 style="padding: 10px; text-align: center">@Model.Title</h2>
+    <hr/>
+    <div style="padding: 10px;">
         <strong>Posted at:</strong> <i><span>@Model.Date</span></i>
-        <br />
+        <br/>
         <strong>Post author: </strong><i><span>@Model.Author.FullName</span></i>
     </div>
-    <hr />
-    <div style="padding:10px;">
+    <hr/>
+    <div style="padding: 10px;">
         @Model.Body
     </div>
+</div>
+
+<div class="post-tags">
+    <h4>Tags:</h4>
+    TODO: add tags
 </div>
 
 @if (Model.Comments.Count > 0)

@@ -64,3 +64,13 @@ textarea {
 .panel-body {
     border-bottom:inset;
 }
+
+.post-tags {
+    margin-top: 10px;
+    font-size: 1.2em;
+}
+
+.post-tags h4 {
+    display: inline;
+    color: #00bfff;
+}

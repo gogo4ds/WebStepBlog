@@ -1,4 +1,5 @@
-﻿@model IEnumerable<WebStepBlog.Models.Tag>
+﻿@using WebStepBlog.Models
+@model IEnumerable<WebStepBlog.Models.Tag>
 
 @{
     ViewBag.Title = "Index";
@@ -20,7 +21,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Title)
+            @Html.ActionLink(item.Title, "Index", "Posts")  //TODO: Redirect to posts with this tag
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
