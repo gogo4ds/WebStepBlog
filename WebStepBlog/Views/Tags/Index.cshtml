@@ -6,7 +6,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Tags</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -24,13 +24,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.ActionLink(item.Title, "PostsByTag", "Tags") //TODO: Redirect to ALL posts with this tag
+            @Html.ActionLink(item.Title, "PostsByTag", "Tags")
         </td>
         <td>
-            @foreach (var post in item.Posts)
-            {
-                @Html.ActionLink(post.Title, "SinglePost", "Posts", new { id = post.Id }, null)
-            }
+            @Html.ActionLink(item.Posts.Count.ToString(), "PostsByTag", "Tags")
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
