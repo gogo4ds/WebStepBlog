@@ -146,6 +146,7 @@ namespace WebStepBlog.Controllers
         {
             Post post = db.Posts.Find(id);
             db.Comments.RemoveRange(post.Comments);
+            post.Tags.Clear();
             db.Posts.Remove(post);
             db.SaveChanges();
             return RedirectToAction("Index");
