@@ -63,8 +63,19 @@ namespace WebStepBlog.Controllers
                 {
                     Tag newTag = new Tag();
                     newTag.Title = tag;
-                    postTags.Add(newTag);
-                    db.Tags.Add(newTag);
+                    List<Tag> search = new List<Tag>();
+                    search.AddRange(db.Tags.Where(t => t.Title == newTag.Title));
+                    if (search.Count()>0)
+                    {
+                        var existingTag = db.Tags.Where(t => t.Title == newTag.Title);
+                        postTags.AddRange(existingTag);
+                       
+                    }
+                    else
+                    {
+                        db.Tags.Add(newTag);
+                        postTags.Add(newTag);
+                    }   
                 }
                 post.Author = db.Users.FirstOrDefault(u=>u.UserName==User.Identity.Name);
                 post.Date = DateTime.Now;
