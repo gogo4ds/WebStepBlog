@@ -54,9 +54,9 @@ namespace WebStepBlog
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+            appId: "1782904718594917",
+            appSecret: "25f85a2708d0cb1119a07b4ecd9ecfef");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
