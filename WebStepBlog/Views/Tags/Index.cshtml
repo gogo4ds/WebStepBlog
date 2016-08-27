@@ -24,7 +24,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.ActionLink(item.Title, "PostsByTag", "Tags")
+            @Html.ActionLink(item.Title, "PostsByTag", "Tags",new { tagName=item.Title},null)
         </td>
         <td>
             @Html.ActionLink(item.Posts.Count.ToString(), "PostsByTag", "Tags")

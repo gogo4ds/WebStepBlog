@@ -21,9 +21,9 @@ namespace WebStepBlog.Controllers
             return View(tags);
         }
 
-        public ActionResult PostsByTag()
+        public ActionResult PostsByTag(string tagName)
         {
-            var tags = db.Tags.Include(t => t.Posts).ToList();
+            var tags = db.Tags.Where(tag=>tag.Title==tagName).Include(t => t.Posts).ToList();
             return View(tags);
         }
 
