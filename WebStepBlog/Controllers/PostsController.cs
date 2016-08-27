@@ -53,12 +53,22 @@ namespace WebStepBlog.Controllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Body,Date")] Post post)
+        public ActionResult Create([Bind(Include = "Id,Title,Body,Date,Tag")] Post post)
         {
             if (ModelState.IsValid)
             {
+                var tags = post.Tag.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                List<Tag> postTags = new List<Tag>();
+                foreach (var tag in tags)
+                {
+                    Tag newTag = new Tag();
+                    newTag.Title = tag;
+                    postTags.Add(newTag);
+                    db.Tags.Add(newTag);
+                }
                 post.Author = db.Users.FirstOrDefault(u=>u.UserName==User.Identity.Name);
                 post.Date = DateTime.Now;
+                post.Tags = postTags;
                 db.Posts.Add(post);
                 db.SaveChanges();
                 this.AddNotification("Post created!",NotificationType.SUCCESS);

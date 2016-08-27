@@ -33,6 +33,8 @@ namespace WebStepBlog.Models
 
         public virtual ICollection<Comment> Comments { get; set; }
 
+        public string Tag { get; set; }
+
         public ICollection<Tag> Tags { get; set; }
     }
 }
