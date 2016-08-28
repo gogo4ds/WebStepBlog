@@ -14,17 +14,20 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Title)
+            Tag
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Posts)
+            Posts
+        </th>
+        <th>
+            Actions
         </th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.ActionLink(item.Title, "PostsByTag", "Tags",new { tagName=item.Title},null)
+            <span class="glyphicon glyphicon-tag"></span> @Html.ActionLink(item.Title, "PostsByTag", "Tags",new { tagName=item.Title},null)
         </td>
         <td>
             @Html.ActionLink(item.Posts.Count.ToString(), "PostsByTag", "Tags", new { tagName = item.Title }, null)

@@ -38,7 +38,9 @@
                          <h4>Tags:</h4>
                          @foreach (var tag in post.Tags)
                          {
-                             @Html.DisplayFor(modelItem => tag.Title)
+                            <spanc class="tag">
+                                <strong>@tag.Title</strong>
+                            </spanc>
                          }
                      </div>
                  </td>

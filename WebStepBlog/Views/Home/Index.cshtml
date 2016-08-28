@@ -6,6 +6,7 @@
 @{
     IPagedList<WebStepBlog.Models.Post> Posts = Model.ToList()[0] as IPagedList<WebStepBlog.Models.Post>;
     List<WebStepBlog.Models.Post> recentPosts = Model.ToList()[1] as List<WebStepBlog.Models.Post>;
+    List<WebStepBlog.Models.Tag> tags = Model.ToList()[2] as List<WebStepBlog.Models.Tag>;
 }
 
 @{
@@ -65,7 +66,8 @@
     <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title"><strong>Recent Posts</strong></h3>
+                <h3 class="panel-title"><strong>Recent Posts</strong>
+                </h3>
             </div>
             @for (int i = 0; i < Math.Min(recentPosts.Count(), 5); i++)
             {
@@ -76,5 +78,22 @@
             }
         </div>
     </div>
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><strong>Popular Tags</strong>
+                </h3>
+            </div>
+            @for (int i = 0; i < Math.Min(tags.Count(), 5); i++)
+            {
+                <div class="panel-body">
+                    <span class="glyphicon glyphicon-tag"></span>
+                    @Html.ActionLink(tags[i].Title, "PostsByTag", "Tags", new { tagName = tags[i].Title }, null)
+                </div>
+            }
+        </div>
+    </div>
+
 </div>
 <div class="pager">@Html.PagedListPager(Posts, page => Url.Action("Index", new { page }), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true })</div>
