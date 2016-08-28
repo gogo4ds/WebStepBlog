@@ -30,7 +30,7 @@
         </div>
     </div>
     <hr />
-    <strong>@Model.Comments.Count() comments to <i>@Model.Title</i></strong>
+    <strong><span class="glyphicon glyphicon-comment"></span> @Model.Comments.Count() comments to <i>@Model.Title</i></strong>
     <hr />
     if (Model.Comments.Count > 0)
     {
@@ -39,7 +39,7 @@
             <div class="comment-preview">
                 <div class="comment-info">
                     <div>  
-                            <i>Posted by</i> <strong>@comment.Name</strong> on @comment.Date
+                            <i>Posted by</i> <span class="glyphicon glyphicon-user"></span> <strong>@comment.Name</strong> on <span class="glyphicon glyphicon-calendar"> </span>@comment.Date
                         @if (User.Identity.IsAuthenticated && User.IsInRole("Administrators"))
                         {
                             <div style="float:right">@Html.ActionLink("Delete", "DeleteComment", "Comments", new { id = comment.Id }, null)</div>
