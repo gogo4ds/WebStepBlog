@@ -62,12 +62,15 @@
 
                         @if (post.Tag != null)
                         {
-                         <p class="glyphicon glyphicon-tag">
-                            @foreach (var tag in post.Tag.Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList())
-                            {
-                                <span>@Html.ActionLink(tag + " ", "PostsByTag", "Tags", new { tagName = tag }, null)</span>
-                            }
-                               </p>  
+                            <p class="glyphicon glyphicon-tag">
+                                @{
+                                    var allTags = post.Tag.Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+                                    for (var i = 0; i < allTags.Count; i++)
+                                    {
+                                         <span>@Html.ActionLink(allTags[i], "PostsByTag", "Tags", new { tagName = allTags[i] }, null)</span>
+                                    }
+                                }                               
+                            </p>  
                         }                                     
                 </div>
             </article>
