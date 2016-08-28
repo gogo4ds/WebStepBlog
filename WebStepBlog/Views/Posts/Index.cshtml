@@ -38,10 +38,12 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Body)
                     <div class="post-tags">
-                        <h4>Tags:</h4>
+                        <span class="glyphicon glyphicon-tags"></span><h4> Tags:</h4>
                         @foreach (var tag in item.Tags)
-                {
-                            @Html.DisplayFor(modelItem => tag.Title)
+                        {
+                            <span class="tag">
+                                <strong>@tag.Title</strong>
+                            </span>
                         }
                     </div>
                 </td>
