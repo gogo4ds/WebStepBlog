@@ -72,8 +72,7 @@
             @for (int i = 0; i < Math.Min(recentPosts.Count(), 5); i++)
             {
                 <div class="panel-body">
-                    <span class="glyphicon glyphicon-book"></span>
-                    @recentPosts[i].Title
+                    <span class="glyphicon glyphicon-book"></span> @Html.ActionLink(recentPosts[i].Title, "SinglePost", "Posts", new { id = recentPosts[i].Id }, null)
                 </div>
             }
         </div>
