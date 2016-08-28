@@ -26,10 +26,10 @@
                         @if (post.Author != null)
                         {
                             @:by <span class="glyphicon glyphicon-user"></span> <i>@post.Author.FullName</i>
-                    }
+                        }
                     </i>
                     @if (post.Comments.Count == 0)
-                {
+                    {
                         <div style="float:right">
                             <span class="glyphicon glyphicon-pencil"></span>                      
                             @Html.ActionLink("Leave a comment", "CreateComment", "Comments", new { id = post.Id }, null)
