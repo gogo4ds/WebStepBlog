@@ -75,6 +75,12 @@ textarea {
     color: #081D6F;
 }
 
+.single-tag {
+    background: #87cefa;
+    padding: 5px;
+    border-radius: 10px; 
+}
+
 .navbar {
   background-color: #081D6F;
   border-color: #e7e7e7;
@@ -123,4 +129,5 @@ textarea {
 .action-links {
     color: #081D6F;
 }
+
 

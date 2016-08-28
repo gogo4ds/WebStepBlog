@@ -43,11 +43,26 @@
                                  var tag = tags[i];
                                  if (i != tags.Length - 1)
                                  {
-                                    <span class="tag"><strong>@tag, </strong></span>
+                                     if (tag == post.Tags.First().Title)
+                                     {
+                                         <span class="tag single-tag"><strong>@tag</strong></span><span>, </span>
+                                     }
+                                     else
+                                     {
+                                        <span class="tag"><strong>@tag</strong></span><span>, </span>
+                                     }
+
                                  }
                                  else
                                  {
-                                    <span class="tag"><strong>@tag</strong></span>
+                                     if (tag == post.Tags.First().Title)
+                                     {
+                                        <span class="tag single-tag"><strong>@tag</strong></span>
+                                     }
+                                     else
+                                     {
+                                        <span class="tag"><strong>@tag</strong></span>
+                                     }
                                  }
                              }
                         }
