@@ -23,7 +23,7 @@ namespace WebStepBlog.Controllers
 
         public ActionResult PostsByTag(string tagName)
         {
-            var tags = db.Tags.Where(tag=>tag.Title==tagName).Include(t => t.Posts).ToList();
+            var tags = db.Tags.Where(tag=>tag.Title==tagName).Include(t => t.Posts.Select(a=>a.Author)).ToList();
             return View(tags);
         }
 
