@@ -22,5 +22,15 @@ namespace WebStepBlog.Controllers
             sumModel.Add(db.Tags.OrderByDescending(d => d.Posts.Count).ToList());
             return View(sumModel);
         }
+
+        public ActionResult Contact()
+        {
+            return View();
+        }
+
+        public ActionResult About()
+        {
+            return View();
+        }
     }
 }
