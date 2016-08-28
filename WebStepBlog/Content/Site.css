@@ -28,7 +28,7 @@ textarea {
     margin: 1%;
 }
 .single-post{
-    background: #e7e1e1;
+    background-color: #e7e1e1;
     margin:2px;
     border-radius:5px;
 }
@@ -68,6 +68,12 @@ textarea {
 .post-tags {
     margin-top: 10px;
     font-size: 1.2em;
+}
+
+.single-tag {
+    background-color: #87cefa;
+    border-radius: 20px;
+    padding: 5px;
 }
 
 .post-tags h4 {
