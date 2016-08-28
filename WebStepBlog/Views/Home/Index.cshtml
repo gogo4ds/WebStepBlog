@@ -56,9 +56,19 @@
                         @Utils.CutText(post.Body, 200)
                         @if (post.Body.Length > 200)
                         {
-                            <span style="float:right">@Html.ActionLink("Read More", "SinglePost", "Posts", new { id = post.Id }, null)</span>
+                            <span style="float: right">@Html.ActionLink("Read More", "SinglePost", "Posts", new {id = post.Id}, null)</span>
                         }
                     </p>
+
+                        @if (post.Tag != null)
+                        {
+                         <p class="glyphicon glyphicon-tag">
+                            @foreach (var tag in post.Tag.Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList())
+                            {
+                                <span>@Html.ActionLink(tag + " ", "PostsByTag", "Tags", new { tagName = tag }, null)</span>
+                            }
+                               </p>  
+                        }                                     
                 </div>
             </article>
         }
