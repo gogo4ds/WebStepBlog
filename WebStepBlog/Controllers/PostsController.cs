@@ -57,37 +57,29 @@ namespace WebStepBlog.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (post.Tag!=null)
+                var tags = post.Tag.Split(new char[] { ',',' ' }, StringSplitOptions.RemoveEmptyEntries);
+                List<Tag> postTags = new List<Tag>();
+                foreach (var tag in tags)
                 {
-                    var tags = post.Tag.Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                    List<Tag> postTags = new List<Tag>();
-                    foreach (var tag in tags)
+                    Tag newTag = new Tag();
+                    newTag.Title = tag;
+                    List<Tag> search = new List<Tag>();
+                    search.AddRange(db.Tags.Where(t => t.Title == newTag.Title));
+                    if (search.Count()>0)
                     {
-                        Tag newTag = new Tag();
-                        newTag.Title = tag;
-                        List<Tag> search = new List<Tag>();
-                        search.AddRange(db.Tags.Where(t => t.Title == newTag.Title));
-                        if (search.Count() > 0)
-                        {
-                            var existingTag = db.Tags.Where(t => t.Title == newTag.Title);
-                            postTags.AddRange(existingTag);
-
-                        }
-                        else
-                        {
-                            db.Tags.Add(newTag);
-                            postTags.Add(newTag);
-                            post.Tags = postTags;
-                        }
+                        var existingTag = db.Tags.Where(t => t.Title == newTag.Title);
+                        postTags.AddRange(existingTag);
+                       
                     }
+                    else
+                    {
+                        db.Tags.Add(newTag);
+                        postTags.Add(newTag);
+                    }   
                 }
-                else
-                {
-                    post.Tags = null;
-                }
-                
                 post.Author = db.Users.FirstOrDefault(u=>u.UserName==User.Identity.Name);
                 post.Date = DateTime.Now;
+                post.Tags = postTags;
                 db.Posts.Add(post);
                 db.SaveChanges();
                 this.AddNotification("Post created!",NotificationType.SUCCESS);
