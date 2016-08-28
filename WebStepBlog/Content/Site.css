@@ -24,11 +24,11 @@ textarea {
 }
 
 .post {
-    background: #F5F6CE;
+    background: #e7e1e1;
     margin: 1%;
 }
 .single-post{
-    background: #F5F6CE;
+    background: #e7e1e1;
     margin:2px;
     border-radius:5px;
 }
@@ -73,12 +73,6 @@ textarea {
 .post-tags h4 {
     display: inline;
     color: #081D6F;
-}
-
-.single-tag {
-    background: #87cefa;
-    padding: 5px;
-    border-radius: 10px; 
 }
 
 .navbar {
