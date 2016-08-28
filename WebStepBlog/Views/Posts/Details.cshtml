@@ -34,6 +34,16 @@
             @Html.DisplayFor(model => model.Date)
         </dd>
 
+        @if (Model.Tag != null)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Tags)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Tag)
+            </dd>
+        }
     </dl>
 </div>
 <p>
