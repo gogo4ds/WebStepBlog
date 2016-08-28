@@ -74,3 +74,44 @@ textarea {
     display: inline;
     color: #00bfff;
 }
+
+
+/* here starts some*/
+
+
+/*.navbar-fixed-top{
+    background-color: royalblue;
+    text-color: black;
+}
+*/
+
+.navbar {
+  background-color: #081D6F;
+  border-color: #e7e7e7;
+}
+
+.navbar .navbar-brand {
+  color: #ffd800;
+}
+
+.navbar .navbar-brand:hover,
+.navbar .navbar-brand:focus {
+  color: #E90C22;
+  background-color: transparent;
+}
+
+
+.navbar .navbar-text {
+  color: #E6E8EE;
+}
+
+.navbar .navbar-nav > li > a {
+  color: #E6E8EE;
+}
+
+.navbar .navbar-nav > li > a:hover,
+.navbar .navbar-nav > li > a:focus {
+  color: #081D6F;
+  background-color: #FFBC01;
+}
+
