@@ -36,12 +36,21 @@
                      @Html.DisplayFor(modelItem => post.Body)
                      <div class="post-tags">
                          <h4>Tags:</h4>
-                         @foreach (var tag in post.Tag.Split())
-                         {
-                            <span class="tag">
-                                <strong>@tag</strong>
-                            </span>
-                         }
+                         @{
+                             var tags = post.Tag.Split(new char[]{ ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                             for (var i = 0; i < tags.Length; i++)
+                             {
+                                 var tag = tags[i];
+                                 if (i != tags.Length - 1)
+                                 {
+                                    <span class="tag"><strong>@tag, </strong></span>
+                                 }
+                                 else
+                                 {
+                                    <span class="tag"><strong>@tag</strong></span>
+                                 }
+                             }
+                        }
                      </div>
                  </td>
                  <td>
@@ -57,8 +66,8 @@
                  </th>
                  <td>
                      @Html.ActionLink("Edit", "Edit", new {id = item.Id}) |
-                     @Html.ActionLink("Details", "Details", new {id = item.Id}) |
-                     @Html.ActionLink("Delete", "Delete", new {id = item.Id})
+                     @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                     @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                  </td>
              </tr>
          }
