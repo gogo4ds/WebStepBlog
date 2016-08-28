@@ -89,6 +89,14 @@ namespace WebStepBlog.Migrations
 
                 context.SaveChanges();
             }
+
+            if (!context.Tags.Any())
+            {
+                CreateTag(context, "bmw");
+                CreateTag(context, "2015");
+                CreateTag(context, "toyota");
+                context.SaveChanges();
+            }
         }
 
         private void CreateUser(ApplicationDbContext context,
@@ -151,6 +159,13 @@ namespace WebStepBlog.Migrations
             post.Date = date;
             post.Author = context.Users.Where(u => u.UserName == authorUsername).FirstOrDefault();
             context.Posts.Add(post);
+        }
+
+        private void CreateTag(ApplicationDbContext context, string title)
+        {
+            var tag = new Tag();
+            tag.Title = title;
+            context.Tags.Add(tag);
         }
     }
 }
