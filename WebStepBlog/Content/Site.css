@@ -24,11 +24,11 @@ textarea {
 }
 
 .post {
-    background: #f0f8ff;
+    background: #F3F0F0;
     margin: 1%;
 }
 .single-post{
-    background: #f0f8ff;
+    background: #F3F0F0;
     margin:2px;
     border-radius:5px;
 }
@@ -43,7 +43,7 @@ textarea {
     margin:20px;
     width:500px;
     padding:8px;
-    background:#f0f8ff;
+    background:#F3F0F0;
     border-radius:10px;
     word-wrap:break-word;
 }
@@ -72,18 +72,8 @@ textarea {
 
 .post-tags h4 {
     display: inline;
-    color: #00bfff;
+    color: #081D6F;
 }
-
-
-/* here starts some*/
-
-
-/*.navbar-fixed-top{
-    background-color: royalblue;
-    text-color: black;
-}
-*/
 
 .navbar {
   background-color: #081D6F;
@@ -114,4 +104,21 @@ textarea {
   color: #081D6F;
   background-color: #FFBC01;
 }
+
+.table > thead > tr > td.active,
+.table > tbody > tr > td.active,
+.table > tfoot > tr > td.active,
+.table > thead > tr > th.active,
+.table > tbody > tr > th.active,
+.table > tfoot > tr > th.active,
+.table > thead > tr.active > td,
+.table > tbody > tr.active > td,
+.table > tfoot > tr.active > td,
+.table > thead > tr.active > th,
+.table > tbody > tr.active > th,
+.table > tfoot > tr.active > th {
+  background-color: #665252;
+}
+
+
 

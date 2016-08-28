@@ -17,20 +17,20 @@
         @foreach (var post in Posts)
         {
             <article class="post col-md-8" style="width:700px">
-                <h2 class="title">@Html.ActionLink(@post.Title, "SinglePost", "Posts", new { id = post.Id }, null) </h2>
+                <h4 class="title">@Html.ActionLink(@post.Title, "SinglePost", "Posts", new { id = post.Id }, null) </h4>
                 <hr />
                 <div>
                     Posted on <span class="glyphicon glyphicon-calendar"></span>    <i>@post.Date</i>
                     <i>
                         @if (post.Author != null)
                         {
-                            @:from <span class="glyphicon glyphicon-user"></span> <i>@post.Author.FullName</i>
+                            @:by <span class="glyphicon glyphicon-user"></span> <i>@post.Author.FullName</i>
                     }
                     </i>
                     @if (post.Comments.Count == 0)
                 {
                         <div style="float:right">
-                            <span class="glyphicon glyphicon-pencil"></span>
+                            <span class="glyphicon glyphicon-pencil"></span>                      
                             @Html.ActionLink("Leave a comment", "CreateComment", "Comments", new { id = post.Id }, null)
                         </div>
                     }

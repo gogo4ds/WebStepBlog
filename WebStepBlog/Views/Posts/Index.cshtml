@@ -7,61 +7,61 @@
     ViewBag.Title = "Index";
 }
 
-<h2>All Posts</h2>
+<h3>All Ads here!</h3>
+    <p>
+        @Html.ActionLink("Create New Ad", "Create")
+    </p>
 
-<p>
-    @Html.ActionLink("Create New Post", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            Title
-        </th>
-        <th>
-            Body
-        </th>
-        <th>
-            Date
-        </th>
-        <th>
-            Author
-        </th>
-        <th></th>
-    </tr>
+    <table class="table">
+        <tr>
+            <th>
+                Model
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Author
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model)
-{
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Body)
-            <div class="post-tags">
-                <h4>Tags:</h4>
-                @foreach (var tag in item.Tags)
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Body)
+                    <div class="post-tags">
+                        <h4>Tags:</h4>
+                        @foreach (var tag in item.Tags)
                 {
-                   @Html.DisplayFor(modelItem => tag.Title)
-                }
-            </div> 
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <th>
-            @if (item.Author == null)
-            {
-                <i>No Author</i>
-            }
+                            @Html.DisplayFor(modelItem => tag.Title)
+                        }
+                    </div>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <th>
+                    @if (item.Author == null)
+                    {
+                        <i>No Author</i>
+                    }
 
-            @Html.DisplayFor(modelItem => item.Author.FullName)
-        </th>          
-        <td>
-            @Html.ActionLink("Edit", "Edit", new {id = item.Id}) |
-            @Html.ActionLink("Details", "Details", new {id = item.Id}) |
-            @Html.ActionLink("Delete", "Delete", new {id = item.Id})
-        </td>
-    </tr>
-} 
-</table>
-<div class="pager">@Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true })</div>
+                    @Html.DisplayFor(modelItem => item.Author.FullName)
+                </th>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </table>
+    <div class="pager">@Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true })</div>
