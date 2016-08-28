@@ -24,11 +24,11 @@ textarea {
 }
 
 .post {
-    background: #F3F0F0;
+    background: #F5F6CE;
     margin: 1%;
 }
 .single-post{
-    background: #F3F0F0;
+    background: #F5F6CE;
     margin:2px;
     border-radius:5px;
 }
@@ -119,6 +119,5 @@ textarea {
 .table > tfoot > tr.active > th {
   background-color: #665252;
 }
-
 
 
