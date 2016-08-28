@@ -33,7 +33,7 @@
                      @Html.DisplayFor(modelItem => post.Title)
                  </td>
                  <td>
-                     @Html.DisplayFor(modelItem => post.Body)
+                     @Html.Raw(post.Body)
                      <div class="post-tags">
                          <h4>Tags:</h4>
                          @{

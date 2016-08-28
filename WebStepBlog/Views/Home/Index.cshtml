@@ -53,7 +53,7 @@
                 <hr />
                 <div class="post-body">
                     <p>
-                        @Utils.CutText(post.Body, 200)
+                        @Html.Raw(Utils.CutText(post.Body, 200))
                         @if (post.Body.Length > 200)
                         {
                             <span style="float: right">@Html.ActionLink("Read More", "SinglePost", "Posts", new {id = post.Id}, null)</span>
