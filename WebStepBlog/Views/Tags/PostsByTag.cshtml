@@ -36,10 +36,10 @@
                      @Html.DisplayFor(modelItem => post.Body)
                      <div class="post-tags">
                          <h4>Tags:</h4>
-                         @foreach (var tag in post.Tags)
+                         @foreach (var tag in post.Tag.Split())
                          {
                             <span class="tag">
-                                <strong>@tag.Title</strong>
+                                <strong>@tag</strong>
                             </span>
                          }
                      </div>
