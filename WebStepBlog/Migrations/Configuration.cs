@@ -20,7 +20,6 @@ namespace WebStepBlog.Migrations
             if (!context.Tags.Any())
             {
                 CreateTag(context, "bmw");
-                CreateTag(context, "2015");
                 CreateTag(context, "toyota");
                 CreateTag(context, "car");
                 CreateTag(context, "audi");
