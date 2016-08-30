@@ -13,6 +13,7 @@ namespace WebStepBlog.Models
         public Post()
         {
             this.Tags = new List<Tag>();
+            this.Date = DateTime.Now;
         }
         [Key]
         public int Id { get; set; }
@@ -27,7 +28,6 @@ namespace WebStepBlog.Models
         [DataType(DataType.MultilineText)]
         public string Body { get; set; }
 
-        [Required]
         public DateTime Date { get; set; }
 
         public ApplicationUser Author { get; set; }
