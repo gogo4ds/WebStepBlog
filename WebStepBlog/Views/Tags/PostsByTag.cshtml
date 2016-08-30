@@ -35,35 +35,13 @@
                  <td>
                      @Html.Raw(post.Body)
                      <div class="post-tags">
-                         <h4>Tags:</h4>
+                         <h4 class="tag">Selected Tag:</h4>
                          @{
                              var tags = post.Tags.ToList();
                              for (var i = 0; i < tags.Count(); i++)
                              {
                                  var tag = tags[i];
-                                 if (i != tags.Count() - 1)
-                                 {
-                                     if (tag.Title == post.Tags.First().Title)
-                                     {
-                                         <span class="tag single-tag"><strong>@tag.Title</strong></span><span>, </span>
-                                     }
-                                     else
-                                     {
-                                        <span class="tag"><strong>@tag.Title</strong></span><span>, </span>
-                                     }
-
-                                 }
-                                 else
-                                 {
-                                     if (tag.Title == post.Tags.First().Title)
-                                     {
-                                        <span class="tag single-tag"><strong>@tag.Title</strong></span>
-                                     }
-                                     else
-                                     {
-                                        <span class="tag"><strong>@tag.Title</strong></span>
-                                     }
-                                 }
+                                 <span class="tag single-tag"><strong>@tag.Title</strong></span>
                              }
                         }
                      </div>
