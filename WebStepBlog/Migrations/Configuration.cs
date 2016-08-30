@@ -17,6 +17,18 @@ namespace WebStepBlog.Migrations
 
         protected override void Seed(ApplicationDbContext context)
         {
+            if (!context.Tags.Any())
+            {
+                CreateTag(context, "bmw");
+                CreateTag(context, "2015");
+                CreateTag(context, "toyota");
+                CreateTag(context, "car");
+                CreateTag(context, "audi");
+                CreateTag(context, "a3");
+                CreateTag(context, "m6");
+                context.SaveChanges();
+            }
+
             if (!context.Users.Any())
             {
                 // If the database is empty, populate sample data in it
@@ -38,7 +50,8 @@ namespace WebStepBlog.Migrations
                             RECENT SERVICE, LIKE NEW BLACK POWER TOP, TOOL KIT, BOOK, SUPER CLEAN,ITS ALWAYS NICE TO FIND A LOW MILAGE FLORIDA CAR.
                             US $8,499.00",
                     date: new DateTime(2016, 03, 27, 17, 53, 48),
-                    authorUsername: "pesho@gmail.com"
+                    authorUsername: "pesho@gmail.com",
+                     tags: "car,bmw"
                 );
 
                 CreatePost(context,
@@ -48,7 +61,8 @@ namespace WebStepBlog.Migrations
                             Also Includes the original tool kit, with all original tools. Everything on this M6 is in working order! The A/C blows Ice Cold, and all interior components are in working order! Engine and transmission run flawlessly. This is a no issue 6er, pulls nice through every gear. Starts and Runs Smooth Every time. Undercarriage is at Mint as it comes. Rust Free BMW. This M6 has 132K Miles but drives like new, it was well taken care of and shows.
                             US $39,500.00",
                     date: new DateTime(2016, 05, 11, 08, 22, 03),
-                    authorUsername: "merry@gmail.com"
+                    authorUsername: "merry@gmail.com",
+                     tags: "car,bmw,m6"
                 );
 
                 CreatePost(context,
@@ -56,7 +70,8 @@ namespace WebStepBlog.Migrations
                     body: @"a 350 small block and chevy tranny. vehicle runs and drives. Vehicle comes with BC serious struts that are adjustable. Two 3inch flow master super 10 and a bm shifter. Solid body and very fun car. Asking 2800.00 
                             US $2,800.00",
                     date: new DateTime(2016, 03, 27, 17, 53, 48),
-                    authorUsername: "geshu@gmail.com"
+                    authorUsername: "geshu@gmail.com",
+                    tags: "car,bmw"
                 );
 
                 CreatePost(context,
@@ -68,7 +83,8 @@ namespace WebStepBlog.Migrations
                             EQUIPT WITH: 1.8T ENGINE, S-TRONIC TRANSMISSION, XENON LED HEADLIGHTS, NAVIGATION, KEYLESS GO & ENTRY, SATELLITE RADIO, BLUETOOTH, DUAL ZONE CLIMATE CONTROL, MULTI-FUNCTION STEERING WHEEL CONTROLS, SUNROOF, CRUISE, POWER EVERYTHING, LEATHER SEATS, AND MUCH MUCH MORE....
                             THE INSURANCE COMPANY VALUED THIS AUDI A3 AT $26,698",
                     date: new DateTime(2016, 02, 18, 22, 14, 38),
-                    authorUsername: "pesho@gmail.com"
+                    authorUsername: "pesho@gmail.com",
+                     tags: "car,audi,a3"
                 );
 
                 CreatePost(context,
@@ -76,7 +92,8 @@ namespace WebStepBlog.Migrations
                     body: @"The 2008 Toyota Corolla comes in three different models: the base CE, sporty S, and better equipped LE. Each can be equipped with either a five-speed manual transmission or four-speed automatic. The 126-horsepower, 1.8L four-cylinder engine that powers all Corollas has variable valve timing with intelligence, which helps give it good response through the rev range without hampering fuel efficiency. With the manual transmission, the Corolla can accelerate from zero to 60 mph in just under nine seconds, according to Toyota, yet it achieves EPA fuel economy ratings of 28 mpg city, 35 mpg highway.The Corolla has a roomy interior and comfortable ride, yet a stiff structure and variable-assist rack-and-pinion steering give it a nimble feel. The back seat is split 60/40 and folds forward to expand the 13.6-cubic-foot trunk.Side-bolster front-seat air bags and full-length curtain air bags are available as an option across the line, as are anti-lock brakes, while electronic stability control is available only on LE and S models with the optional automatic transmission. Models equipped with the stability control system and anti-lock brakes also get brake assist, which helps apply full brake force in emergency braking.Standard equipment on the base CE model includes air conditioning, tilt steering, a height-adjustable driver's seat, a trunk lamp, power mirrors, and a CD sound system with four speakers. The S model adds a sportier look, with smoked headlamp lenses, integrated front fog lamps, under-body spoilers, rocker panel extensions, and rear mudguards, and it also upgrades to power locks, map lights, and a six-speaker sound system. The LE doesn't get all the sporty appearance cues of the S but instead has remote keyless entry, power windows, and woodgrain trim. Other major options include a power moonroof, alloy wheels, and an eight-speaker JBL sound system with six-disc changer
                             us $3,100.00",
                     date: new DateTime(2016, 04, 11, 19, 02, 05),
-                    authorUsername: "geshu@gmail.com"
+                    authorUsername: "geshu@gmail.com",
+                    tags: "car,toyota"
                 );
 
                 CreatePost(context,
@@ -84,17 +101,10 @@ namespace WebStepBlog.Migrations
                     body: @"We are pleased to offer this 2010 Toyota Tundra SR5 Double Cab that is damaged as shown (please take a look at pictures for current damage). We can offer Domestic and International shipping arrangements, please take a look at the pictures for more details and don't pass up the opportunity to own this for a fraction of the original sales price as the listing can be removed any second due to the number of potential buyers!!!! This Vehicle has a SALVAGE TITLE and currently is not registered. The buyer will have to register it in his or her state of residence, which may or may not involve some extra steps compared to registering a clean title car. All California Buyer ONLY must pay 9% sales tax and will receive a Acquisition Bill Of Sale. We make no representations about repairability, availability of parts or costs of repairs.
                             US $6,950.00",
                     date: new DateTime(2016, 06, 30, 17, 36, 52),
-                    authorUsername: "merry@gmail.com"
+                    authorUsername: "merry@gmail.com",
+                    tags: "car,toyota"
                 );
 
-                context.SaveChanges();
-            }
-
-            if (!context.Tags.Any())
-            {
-                CreateTag(context, "bmw");
-                CreateTag(context, "2015");
-                CreateTag(context, "toyota");
                 context.SaveChanges();
             }
         }
@@ -150,22 +160,37 @@ namespace WebStepBlog.Migrations
             }
         }
 
-        private void CreatePost(ApplicationDbContext context,
-            string title, string body, DateTime date, string authorUsername)
-        {
-            var post = new Post();
-            post.Title = title;
-            post.Body = body;
-            post.Date = date;
-            post.Author = context.Users.Where(u => u.UserName == authorUsername).FirstOrDefault();
-            context.Posts.Add(post);
-        }
-
         private void CreateTag(ApplicationDbContext context, string title)
         {
             var tag = new Tag();
             tag.Title = title;
             context.Tags.Add(tag);
+        }
+
+        private void CreatePost(ApplicationDbContext context,
+            string title, string body, DateTime date, string authorUsername,string tags)
+        {
+            var post = new Post();
+            post.Title = title;
+            post.Body = body;
+            post.Date = date;
+            string[] allTags = tags.Split(',').ToArray();
+            foreach (var tag in allTags)
+            {
+                Tag newTag=new Tag() { Title=tag};
+                post.Tag = tags;
+                if (context.Tags.Any(t => t.Title == newTag.Title))
+                {
+                    var existingTag = context.Tags.SingleOrDefault(t => t.Title == newTag.Title);
+                    post.Tags.Add(existingTag);
+                }
+                else
+                {
+                    post.Tags.Add(newTag);
+                }
+            }
+            post.Author = context.Users.Where(u => u.UserName == authorUsername).FirstOrDefault();
+            context.Posts.Add(post);
         }
     }
 }
