@@ -81,6 +81,14 @@ textarea {
     color: #081D6F;
 }
 
+.tag {
+  font-family: sans-serif;
+}
+
+.tag :hover {
+  color: #E90C22;
+   text-decoration: none; 
+}
 .navbar {
   background-color: #081D6F;
   border-color: #e7e7e7;
