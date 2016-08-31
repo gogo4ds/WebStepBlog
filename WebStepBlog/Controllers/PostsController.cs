@@ -118,7 +118,7 @@ namespace WebStepBlog.Controllers
         [HttpPost]
         [Authorize(Roles = "Administrators")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Body")] Post post)
+        public ActionResult Edit([Bind(Include = "Id,Title,Body,Tag")] Post post)
         {
             if (ModelState.IsValid)
             {
