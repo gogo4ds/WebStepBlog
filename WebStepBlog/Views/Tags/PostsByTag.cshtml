@@ -37,31 +37,31 @@
                      <div class="post-tags">
                          <h4>Tags:</h4>
                          @{
-                             var tags = post.Tag.Split(new char[]{ ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                             for (var i = 0; i < tags.Length; i++)
+                             var tags = post.Tags.ToList();
+                             for (var i = 0; i < tags.Count(); i++)
                              {
                                  var tag = tags[i];
-                                 if (i != tags.Length - 1)
+                                 if (i != tags.Count() - 1)
                                  {
-                                     if (tag == post.Tags.First().Title)
+                                     if (tag.Title == post.Tags.First().Title)
                                      {
-                                         <span class="tag single-tag"><strong>@tag</strong></span><span>, </span>
+                                         <span class="tag single-tag"><strong>@tag.Title</strong></span><span>, </span>
                                      }
                                      else
                                      {
-                                        <span class="tag"><strong>@tag</strong></span><span>, </span>
+                                        <span class="tag"><strong>@tag.Title</strong></span><span>, </span>
                                      }
 
                                  }
                                  else
                                  {
-                                     if (tag == post.Tags.First().Title)
+                                     if (tag.Title == post.Tags.First().Title)
                                      {
-                                        <span class="tag single-tag"><strong>@tag</strong></span>
+                                        <span class="tag single-tag"><strong>@tag.Title</strong></span>
                                      }
                                      else
                                      {
-                                        <span class="tag"><strong>@tag</strong></span>
+                                        <span class="tag"><strong>@tag.Title</strong></span>
                                      }
                                  }
                              }
