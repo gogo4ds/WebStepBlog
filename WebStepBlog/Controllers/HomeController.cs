@@ -33,9 +33,5 @@ namespace WebStepBlog.Controllers
             return View();
         }
 
-        public ActionResult TopDeal()
-        {
-            return View();
-        }
     }
 }
