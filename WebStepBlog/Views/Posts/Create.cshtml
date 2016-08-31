@@ -18,7 +18,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control",style="width:790px" } })
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control",style="width:790px", @placeholder = "Post title" } })
                 @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -34,7 +34,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Tag, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Tag, new { htmlAttributes = new { @class = "form-control",style="width:600px" } })
+                @Html.EditorFor(model => model.Tag, new { htmlAttributes = new { @class = "form-control",style="width:600px", @placeholder = "Please divide your tags with coma or space" } })
                 @Html.ValidationMessageFor(model => model.Tag, "", new { @class = "text-danger" })
             </div>
         </div>

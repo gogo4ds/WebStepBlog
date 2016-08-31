@@ -43,6 +43,7 @@ namespace WebStepBlog.Controllers
         }
 
         // GET: Tags/Create
+        [Authorize(Roles = "Administrators")]
         public ActionResult Create()
         {
             return View();
@@ -52,6 +53,7 @@ namespace WebStepBlog.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "Administrators")]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Title")] Tag tag)
         {
@@ -66,6 +68,7 @@ namespace WebStepBlog.Controllers
         }
 
         // GET: Tags/Edit/5
+        [Authorize(Roles = "Administrators")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -84,6 +87,7 @@ namespace WebStepBlog.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "Administrators")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Title")] Tag tag)
         {
@@ -97,6 +101,7 @@ namespace WebStepBlog.Controllers
         }
 
         // GET: Tags/Delete/5
+        [Authorize(Roles = "Administrators")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -113,6 +118,7 @@ namespace WebStepBlog.Controllers
 
         // POST: Tags/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "Administrators")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

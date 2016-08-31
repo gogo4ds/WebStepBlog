@@ -68,4 +68,7 @@
             </tr>
         }
     </table>
+<p>
+    @Html.ActionLink("Back to Home", "Index", "Home")
+</p>
     <div class="pager">@Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true })</div>
