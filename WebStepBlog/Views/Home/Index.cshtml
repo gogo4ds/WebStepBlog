@@ -64,7 +64,7 @@
                         <p class="glyphicon glyphicon-tag">
                             @foreach (var tag in post.Tags)
                             {
-                                <span class="tag">
+                                <span class="tag index-tag">
                                     <strong>@Html.ActionLink(tag.Title, "PostsByTag", "Tags", new { tagName = tag.Title }, null)</strong>
                                 </span>
                             }
