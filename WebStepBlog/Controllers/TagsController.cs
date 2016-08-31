@@ -17,7 +17,7 @@ namespace WebStepBlog.Controllers
         // GET: Tags
         public ActionResult Index()
         {
-            var tags = db.Tags.Include(t => t.Posts).ToList();
+            var tags = db.Tags.Include(t => t.Posts).OrderByDescending(t=>t.Posts.Count).ToList();
             return View(tags);
         }
 

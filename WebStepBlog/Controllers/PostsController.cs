@@ -118,11 +118,40 @@ namespace WebStepBlog.Controllers
         [HttpPost]
         [Authorize(Roles = "Administrators")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Body,Tag")] Post post)
+        public ActionResult Edit([Bind(Include = "Id,Title,Body,Tag,Tags")] Post post)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(post).State = EntityState.Modified;
+                var currentPost = db.Posts.Include(p => p.Tags).Single(x => x.Id == post.Id);
+                currentPost.Tags.Clear();
+                currentPost.Tag = post.Tag;
+                if (!String.IsNullOrEmpty(post.Tag))
+                {
+                    string[] tags = post.Tag.Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries).ToArray();
+                    List<Tag> postTags = new List<Tag>();
+                    foreach (var tag in tags)
+                    {
+                        Tag newTag = new Tag();
+                        newTag.Title = tag;
+                        List<Tag> search = new List<Tag>();
+                        search.AddRange(db.Tags.Where(t => t.Title == newTag.Title));
+                        if (search.Count() > 0)
+                        {
+                            var existingTag = db.Tags.Where(t => t.Title == newTag.Title);
+                            postTags.AddRange(existingTag);
+
+                        }
+                        else
+                        {
+                            db.Tags.Add(newTag);
+                            postTags.Add(newTag);
+                        }
+                        currentPost.Tags = postTags;
+                    }
+                }
+                currentPost.Title = post.Title;
+                currentPost.Body = post.Body;
+                db.Entry(currentPost).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

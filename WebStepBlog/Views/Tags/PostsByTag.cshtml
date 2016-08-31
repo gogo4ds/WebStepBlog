@@ -13,7 +13,7 @@
             Title
         </th>
         <th>
-            Body
+            Content
         </th>
         <th>
             Date
@@ -21,7 +21,9 @@
         <th>
             Author
         </th>
-        <th></th>
+        <th>
+            Actions
+        </th>
     </tr>
 
     @foreach (var item in Model)
@@ -30,7 +32,7 @@
          {
              <tr>
                  <td>
-                     @Html.DisplayFor(modelItem => post.Title)
+                     <strong>@post.Title</strong>
                  </td>
                  <td>
                      @Html.Raw(post.Body)
