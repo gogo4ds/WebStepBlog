@@ -17,15 +17,18 @@
     <div style="padding: 10px;">
         @Html.Raw(Model.Body)
     </div>
-    <div class="post-tags">
-        <span class="glyphicon glyphicon-tags"></span><h4> Tags:</h4>
-        @foreach (var tag in Model.Tags)
-        {
-            <span class="tag">
-                <strong>@tag.Title</strong>
-            </span>
-        }
-    </div>
+    @if (Model.Tags.Count > 0)
+    {
+        <div class="post-tags">
+            <span class="glyphicon glyphicon-tags"></span><h4> Tags:</h4>
+            @foreach (var tag in Model.Tags)
+            {
+                <span class="tag">
+                    <strong>@tag.Title</strong>
+                </span>
+            }
+        </div>
+    } 
 </div>
 
 @if (Model.Comments.Count > 0)
