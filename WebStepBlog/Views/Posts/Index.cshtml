@@ -40,16 +40,15 @@
                 <td>
                     @Html.Raw(item.Body)
                     <div class="post-tags">
-                        <span class="glyphicon glyphicon-tags"></span><h4> Tags:</h4>
                         @foreach (var tag in item.Tags)
                         {
-                            <span class="tag">
-                                <strong>@tag.Title</strong>
+                            <span>
+                                <strong class="glyphicon glyphicon-tag">@tag.Title</strong>
                             </span>
                         }
                     </div>
                 </td>
-                <td>
+                <td>    
                     @Html.DisplayFor(modelItem => item.Date)
                 </td>
                 <th>
