@@ -41,7 +41,7 @@
                     @Html.Raw(item.Body)
                     <div class="post-tags">
                         <span class="glyphicon glyphicon-tags"></span><h4> Tags:</h4>
-                        @foreach (var tag in item.Tags.Where(p => p != item.Tags.Last()))
+                        @foreach (var tag in item.Tags)
                         {
                             <span class="tag">
                                 <strong>@tag.Title,</strong>
