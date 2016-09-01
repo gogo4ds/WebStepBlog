@@ -59,17 +59,19 @@
                             <span style="float: right">@Html.ActionLink("Read More", "SinglePost", "Posts", new {id = post.Id}, null)</span>
                         }
                     </p>
-
-                    <div class="post-tags">
-                        <p class="glyphicon glyphicon-tag">
-                            @foreach (var tag in post.Tags)
-                            {
-                                <span class="tag index-tag">
-                                    <strong>@Html.ActionLink(tag.Title, "PostsByTag", "Tags", new { tagName = tag.Title }, null)</strong>
-                                </span>
-                            }
-                        </p>
-                    </div>                         
+                    @if (post.Tags.Count > 0)
+                    {
+                        <div class="post-tags">
+                            <p class="glyphicon glyphicon-tag">
+                                @foreach (var tag in post.Tags)
+                                {
+                                    <span class="tag index-tag">
+                                        <strong>@Html.ActionLink(tag.Title, "PostsByTag", "Tags", new { tagName = tag.Title }, null)</strong>
+                                    </span>
+                                }
+                            </p>
+                        </div>
+                    }                      
                 </div>
             </article>
         }
